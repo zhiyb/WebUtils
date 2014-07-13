@@ -1,0 +1,18 @@
+# 5ips
+
+# 单田芳_曾国番
+#url=http://www.5ips.net/ps/57.htm
+
+# 单田芳_白眉大侠
+#url=http://www.5ips.net/ps/120.htm
+
+# 单田芳_水浒全传(上)
+#url=http://www.5ips.net/ps/42.htm
+
+# 单田芳_水浒全传(下)
+#url=http://www.5ips.net/ps/43.htm
+
+# 单田芳_三国演义
+#url=http://www.5ips.net/ps/36.htm
+
+network="电信"
