@@ -1,0 +1,28 @@
+# (string)	QQ account, leave blank for interactive input
+qq=1665053898
+# (string)	Password, leave blank for interactive input
+pwd=
+
+# (string)	Message output encoding
+encoding=UTF-8
+# (string)	Send before reply strings
+startnote=
+# (string)	Send after reply strings
+finishnote=
+# (string)	Friend request verify string
+friendverify=zhiyb-AUTO
+
+# (string)	Program to display image
+#img=./bin/ImageViewer
+# (gif/png/jpg)	Image verify, image type
+imgType=png
+
+# (integer)	Refresh time (seconds), default 3
+sleep=1
+# (integer)	Retry times, default 10
+retry=10
+
+# (bool)	Display welcome message after receive
+welcomemsg=0
+# (bool)	Accept friend request
+addfriend=1
