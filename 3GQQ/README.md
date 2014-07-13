@@ -1,4 +1,4 @@
-3GQQ_Bash
+3GQQ
 =========
 
-Using bash to login to 3GQQ, receive and send messages
+Using bash scripts to login to 3GQQ, receive and send messages
