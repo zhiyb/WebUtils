@@ -16,8 +16,8 @@ trap "rm \"$piddir\"/$$" EXIT
 case $uid in
 # zhiyb
 544080857 ) admin;;
-# PokeBox | zyh001
-931296415 | 470612348 ) op;;
+# PokeBox | zyh001    | Ruilx
+931296415 | 470612348 | 799382072 ) op;;
 # Else
 * ) normal;;
 esac
