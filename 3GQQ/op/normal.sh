@@ -33,6 +33,7 @@ function func
 		case "$context" in
 		*help* | *Help* | "帮助" ) help;;
 		"Hello" | "hello" | "你好" ) echo "Hello, this is the AUTO script.";;
+		zyh*笨蛋* ) echo "对的对的喵~不要告诉他喵~";;
 		* ) 
 			echo "Hello, this is the AUTO script.
 		Admin is zhiyb @ 544080857.

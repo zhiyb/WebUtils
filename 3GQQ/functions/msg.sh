@@ -120,6 +120,7 @@ function msgHandle
 
 		mkfifo "$fifofile"
 		(sendReply) &
+		sleep 1
 		echo "$!" > "$fifofile"
 		rm "$fifofile"
 	done
