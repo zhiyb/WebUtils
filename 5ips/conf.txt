@@ -16,6 +16,6 @@
 #url=http://www.5ips.net/ps/36.htm
 
 # 百家讲坛 - 生命的奥秘
-url=http://www.5ips.net/ps/599.htm
+#url=http://www.5ips.net/ps/599.htm
 
 network="电信"
