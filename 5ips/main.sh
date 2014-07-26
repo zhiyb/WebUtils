@@ -18,6 +18,7 @@ function getLists
 function download
 {
 	for ((i = 0; i < ${#namelist[@]}; i++)); do
+		((from > i + 1)) && continue
 		downloadThread "${namelist[i]}" "${urllist[i]}"
 	done
 }

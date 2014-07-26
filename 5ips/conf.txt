@@ -18,4 +18,8 @@
 # 百家讲坛 - 生命的奥秘
 #url=http://www.5ips.net/ps/599.htm
 
+# 百家讲坛 - 智慧的痛苦
+#url=http://www.5ips.net/ps/598.htm
+#from=4
+
 network="电信"
