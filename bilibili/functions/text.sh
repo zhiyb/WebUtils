@@ -90,7 +90,14 @@ function html2text
 # Args:
 function fileName
 {
-	sed "s/\//／/g;s/\\\\/＼/g" -
+	sed "	s/\//／/g
+		s/\\\\/＼/g
+		s/:/：/g
+		s/*/＊/g
+		s/?/？/g
+		s/</＜/g
+		s/>/＞/g
+		s/|/｜/g" -
 }
 
 # Args: From, To
