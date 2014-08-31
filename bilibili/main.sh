@@ -32,10 +32,10 @@ function downloadThread
 	while :; do
 		#echo -e "\e[93mDownloading \e[37m$1\e[93m: $2...\e[0m"
 		url=$(getWData "http://www.flvcd.com/parse.php?kw=$2" | iconv -f GB2312 -t "$encoding" | fgrep "下载地址" | sed "s/</\n</g;s/>/>\n/g" | getFieldArg a href)
-		file="$dir/$name/$(echo "$1.flv" | fileName)"
-		[ -e "$file" ] && echo -e "\e[93mSkip \e[37m$1\e[0m" && continue
+		file="$dir/$(echo "$name" | fileName)/$(echo "$1.flv" | fileName)"
+		#[ -e "$file" ] && echo -e "\e[93mSkip \e[37m$1\e[0m" && continue
 		echo -e "\e[93mDownloading \e[37m$1\e[0m"
-		wget -nv -O "$file" "$url" && return
+		wget -c -nv -O "$file" "$url" && return
 	done
 }
 
