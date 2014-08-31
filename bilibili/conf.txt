@@ -1,5 +1,7 @@
 # 5ips
 
+dir=/mnt/usr
+
 # Vocaloid传说级名曲补完计划
 av=av188136
 
