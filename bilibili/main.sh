@@ -35,7 +35,7 @@ function downloadThread
 		file="$dir/$(echo "$name" | fileName)/$(echo "$1.flv" | fileName)"
 		#[ -e "$file" ] && echo -e "\e[93mSkip \e[37m$1\e[0m" && continue
 		echo -e "\e[93mDownloading \e[37m$1\e[0m"
-		wget -c -nv -O "$file" "$url" && return
+		wget --progress=bar:force -c -O "$file" "$url" 2>&1 | progressFilter && return
 	done
 }
 
