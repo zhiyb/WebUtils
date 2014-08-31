@@ -1,0 +1,6 @@
+# 5ips
+
+# Vocaloid传说级名曲补完计划
+av=av188136
+
+network="电信"
