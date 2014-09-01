@@ -27,7 +27,7 @@ url="$1"
 file="$2"
 
 # Configuration variables
-encoding="UTF-8"
+encoding="iconv -f UTF-8 -t GB2312"
 
 getLists
 output
