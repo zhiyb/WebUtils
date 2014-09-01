@@ -95,6 +95,7 @@ function fileName
 		s/:/：/g
 		s/*/＊/g
 		s/?/？/g
+		s/!/！/g
 		s/</＜/g
 		s/>/＞/g
 		s/|/｜/g" -
