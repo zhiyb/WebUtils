@@ -102,5 +102,5 @@ function text2html
 {
 	sed "	s/%/\%2525/g
 		s/&/\%2526/g
-		s/+/%252B/g" - | unix2dos
+		s/+/%252B/g" - | dos2unix | head -c -1 | unix2dos
 }
