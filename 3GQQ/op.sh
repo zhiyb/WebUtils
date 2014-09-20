@@ -19,7 +19,7 @@ case $uid in
 # zhiyb
 544080857 ) admin;;
 # PokeBox | zyh001    | Ruilx
-931296415 | 470612348 | 799382072 ) op;;
+931296415 | 470612348 | 799382072 | 328901936 ) op;;
 # Else
 * ) normal;;
 esac

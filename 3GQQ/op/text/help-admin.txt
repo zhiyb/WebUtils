@@ -13,5 +13,5 @@ Available tasks:
 @terminate / @kill	| Terminate all pending transmissions and commands
 @remote			| Launch ssh remote connection
 @killremote		| Kill ssh remote connection
-@quit [status]		| Terminate and quit with \`status\'
-@exit [status]		| Wait then exit with \`status\'
+@quit [status]		| Terminate and quit with `status'
+@exit [status]		| Wait then exit with `status'

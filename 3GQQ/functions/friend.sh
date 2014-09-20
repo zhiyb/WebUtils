@@ -6,7 +6,7 @@ function updateFriends
 	# Fetch friend list
 	url="$(getLinkAddr "$data" "好友列表")"
 	tmp="$(getData "$url" "$cookies")"
-	url="$(getLinkAddr "$tmp" "分组")"
+	url="$(getLinkAddr "$tmp" "分组" | uniq)"
 	tmp="$(getData "$url" "$cookies")"
 	tmp="$(getSection "$tmp" "anchor" "我的好友(.*")"
 	cnt="$(($(echo "$tmp" | wc -l) / 9))"

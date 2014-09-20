@@ -29,6 +29,7 @@ function func
 		*help* | *Help* | "帮助" ) help;;
 		"Hello" | "hello" | "你好" ) cat "$optext/hello.txt";;
 		zyh*笨蛋* ) echo "对的对的喵~不要告诉他喵~";;
+		*gan* ) echo "逗";;
 		* ) cat "$optext/unknown.txt";;
 		esac
 	fi
