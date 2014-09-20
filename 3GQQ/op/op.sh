@@ -10,22 +10,10 @@ function opEntry
 	entry
 }
 
-function ophelp
-{
-	cat "$optext/help-op.txt"
-	echo "Use #command [argumnts] to run command in subshell."
-	help
-	echo "@update			| Update friend list
-		@list			| List friends
-		@send QQ/Name Message	| Send message to someone
-		@send-qq QQ Message	| Send message to a QQ account
-		@terminate / @kill	| Terminate all pending transmissions and commands"
-}
-
 function opfunc
 {
 	if [ "${context:0:1}" == "#" ]; then
-		eval ${context:1} 2>&1
+		eval "${context:1}" 2>&1
 		echo "Command executed."
 		exit 0
 	elif [ "${context:0:1}" == "@" ]; then
@@ -41,7 +29,7 @@ function opfunc
 		esac
 	else
 		case "$context" in
-		"help" | "--help" | "-h" | "Help" ) ophelp;;
+		"help" | "--help" | "-h" | "Help" ) cat "$optext/help-op.txt";;
 		* ) return;;
 		esac
 	fi

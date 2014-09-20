@@ -52,7 +52,7 @@ function sendMsg
 #	rawmsg="$send"
 		if [ -z "$send" ]; then continue; fi
 		failed=0
-		msg=$(echo "$send" | text2html)
+		msg=$(echo "$send" | text2html | tr -d '\n')
 		post=$(getPostData "$replydata")
 		while ((failed++ < retry)); do
 			data=$(getData "$url" "$cookies" "$post")
