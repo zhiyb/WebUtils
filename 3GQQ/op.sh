@@ -10,6 +10,8 @@
 . ./op/op.sh
 . ./op/normal.sh
 
+export optext="./op/text"
+
 touch "$piddir"/$$
 trap "rm \"$piddir\"/$$" EXIT
 

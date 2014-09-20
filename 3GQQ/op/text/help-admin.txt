@@ -1,0 +1,17 @@
+Use /commond [argumnts] to run command in main loop.
+Use #command [argumnts] to run command in subshell.
+Use @keyword to run specific task.
+Available tasks:
+@status / @info		| Display current status
+@date			| Display date
+@time			| Display time
+@datetime		| Display date and time
+@update			| Update friend list
+@list			| List friends
+@send QQ/Name Message	| Send message to someone
+@send-qq QQ Message	| Send message to a QQ account
+@terminate / @kill	| Terminate all pending transmissions and commands
+@remote			| Launch ssh remote connection
+@killremote		| Kill ssh remote connection
+@quit [status]		| Terminate and quit with \`status\'
+@exit [status]		| Wait then exit with \`status\'

@@ -100,5 +100,7 @@ function html2text
 # Accept input stream
 function text2html
 {
-	sed "s/\&/\%26/g" -
+	sed "	s/%/\%2525/g
+		s/&/\%2526/g
+		s/+/%252B/g" - | unix2dos
 }

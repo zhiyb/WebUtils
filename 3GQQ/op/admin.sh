@@ -12,12 +12,7 @@ function adminEntry
 
 function adminhelp
 {
-	echo "Use /commond [argumnts] to run command in main loop."
-	ophelp
-	echo "@remote			| Launch ssh remote connection
-	@killremote		| Kill ssh remote connection
-	@quit [status]		| Terminate and quit with \`status\'
-	@exit [status]		| Wait then exit with \`status\'"
+	cat "$optext/help-admin.txt"
 }
 
 function adminfunc

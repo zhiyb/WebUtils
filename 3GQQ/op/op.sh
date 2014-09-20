@@ -12,6 +12,7 @@ function opEntry
 
 function ophelp
 {
+	cat "$optext/help-op.txt"
 	echo "Use #command [argumnts] to run command in subshell."
 	help
 	echo "@update			| Update friend list

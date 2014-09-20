@@ -1,0 +1,6 @@
+Use @keyword to run specific task.
+Available tasks:
+@status / @info		| Display current status
+@date			| Display date
+@time			| Display time
+@datetime		| Display date and time

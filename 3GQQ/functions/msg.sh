@@ -48,28 +48,29 @@ function sendMsg
 		return 1
 	fi
 	url=$(getFieldArg "$replydata" go href)
-	while read rawmsg; do
-		if [ -z "$rawmsg" ]; then continue; fi
+#	while read rawmsg; do
+#	rawmsg="$send"
+		if [ -z "$send" ]; then continue; fi
 		failed=0
-		msg=$(echo "$rawmsg" | text2html)
+		msg=$(echo "$send" | text2html)
 		post=$(getPostData "$replydata")
 		while ((failed++ < retry)); do
 			data=$(getData "$url" "$cookies" "$post")
 			if [ "$(getFieldArg "$data" card title)" == "服务器错误" ]; then
-				echo -e "\e[33m$rawmsg\e[0m" >&2
+				echo -e "\e[33m$send\e[0m" >&2
 				break
 			fi
 			if [ ! -z "$(echo "$data" | fgrep "消息发送成功")" ]; then
-				echo -e "\e[93m$rawmsg\e[0m" >&2
+				echo -e "\e[93m$send\e[0m" >&2
 				break
 			fi
 			echo "$data" > "$debugfile"
-			echo -e "\e[97m$(date '+%Y-%m-%d %H:%M:%S') \e[91m$rawmsg: retry $failed...\e[0m" >&2
+			echo -e "\e[97m$(date '+%Y-%m-%d %H:%M:%S') \e[91mretry $failed...\e[0m" >&2
 			if [ ! -z "$(echo "$data" | fgrep "请求过于频繁")" ]; then sleep 8; fi
 		done
-	done <<-MESSAGES_HERE
-		$send
-	MESSAGES_HERE
+#	done <<-MESSAGES_HERE
+#		$send
+#	MESSAGES_HERE
 }
 
 # Send reply
@@ -78,9 +79,7 @@ function sendReply
 	pid="$(<"$fifofile")"
 	touch "$piddir"/$pid
 	reply="$($op)"
-	sendMsg "$uid" "$startnote
-		$reply
-		$finishnote"
+	sendMsg "$uid" "$startnote$reply$finishnote"
 	rm "$piddir"/$pid
 }
 
