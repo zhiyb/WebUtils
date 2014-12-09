@@ -43,15 +43,13 @@ function adminfunc
 
 function remote
 {
-	ip=192.168.6.12
-	ip2=192.168.0.24
 	if (($1 == 1)); then
-		echo "ssh yz39g13@uglogin -R 2222:127.0.0.1:22 -R 59590:$ip:5900 -N -R 59591:$ip2:5900 &" >> "$cmdfile"
+		echo "ssh -i /root/.ssh/id_rsa yz39g13@uglogin.ecs.soton.ac.uk -N -R 2222:127.0.0.1:22 -R 59590:192.168.0.6:5900 &" >> "$cmdfile"
 		chmod 755 "$cmdfile"
 		echo "SSH remote launched."
 		exit 1
 	else
-		id=$(ps xw | grep "ssh yz39g13@uglogin" | grep -v "grep" | awk "{print(\$1)}")
+		id=$(ps w | grep "ssh .* yz39g13@uglogin" | grep -v "grep" | awk "{print(\$1)}")
 		if [ "$id" == "" ]; then
 			echo "No SSH remote running."
 		elif kill $id 2>&1; then
