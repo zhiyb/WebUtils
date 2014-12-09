@@ -123,4 +123,5 @@ function msgHandle
 		echo "$!" > "$fifofile"
 		rm "$fifofile"
 	done
+	((msgcount >= 3)) && sendMsg "$uid" "You send messages too fast! Please be slower, otherwise messages may become disordered."
 }

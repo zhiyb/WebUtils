@@ -1,3 +1,2 @@
 Hello, this is the AUTO script.
-Admin is zhiyb @ 544080857.
 For help, say `help'.

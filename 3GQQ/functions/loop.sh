@@ -3,6 +3,7 @@ function messageLoop
 {
 	echo -e "\e[93mRefresh every $sleep seconds\e[0m"
 	echo -e "\e[92m$(date '+%Y-%m-%d %H:%M:%S') Entered message loop.\e[0m"
+	sendMsg "$admin" "AUTO initialised at $(date '+%Y-%m-%d %H:%M:%S')" &
 
 	while :; do
 		lastdata="$data"
@@ -36,6 +37,7 @@ function messageLoop
 		fi
 		if ((failed)); then
 			echo -e "\e[92m$(date '+%Y-%m-%d %H:%M:%S') Back to message loop.\e[0m"
+			sendMsg "$admin" "AUTO recovered at $(date '+%Y-%m-%d %H:%M:%S')" &
 			failed=0
 		fi
 

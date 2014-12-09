@@ -2,6 +2,8 @@
 qq=1665053898
 # (string)	Password, leave blank for interactive input
 pwd=
+# (string)	QQ account, admin account
+admin=544080857
 
 # (string)	Message output encoding
 encoding=UTF-8
