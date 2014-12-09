@@ -24,8 +24,9 @@ function adminfunc
 		exit 1
 	elif [ "${context:0:1}" == "@" ]; then
 		case "${context:1}" in
-		"remote" ) remote 1;;
-		"killremote" ) remote 0;;
+		"r" ) remote 1;;
+		"rinfo" ) remote 2;;
+		"killr" ) remote 0;;
 		"quit"* ) echo "Quit."
 			echo "${context:1}" > "$cmdfile";;
 		"exit"* ) echo "Exit."
@@ -41,6 +42,11 @@ function adminfunc
 	exit 0
 }
 
+function checkRemote
+{
+	ps w | grep "ssh .* yz39g13@uglogin" | grep -v "grep" | awk "{print(\$1)}"
+}
+
 function remote
 {
 	if (($1 == 1)); then
@@ -48,12 +54,19 @@ function remote
 		chmod 755 "$cmdfile"
 		echo "SSH remote launched."
 		exit 1
-	else
-		id=$(ps w | grep "ssh .* yz39g13@uglogin" | grep -v "grep" | awk "{print(\$1)}")
+	elif (($1 == 0)); then
+		id=$(checkRemote)
 		if [ "$id" == "" ]; then
 			echo "No SSH remote running."
 		elif kill $id 2>&1; then
-			echo "SSH remote killed."
+			echo -e "SSH remote killed:\n$id"
+		fi
+	else
+		id=$(checkRemote)
+		if [ "$id" == "" ]; then
+			echo "No SSH remote running."
+		else
+			echo -e "SSH remote running:\n$id"
 		fi
 	fi
 }
