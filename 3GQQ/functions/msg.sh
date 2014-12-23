@@ -116,6 +116,7 @@ function msgHandle
 		fi
 		uid="$(getArg "$(echo "$replydata" | fgrep "name=\"u\"")" value)"
 		echo -e "$replydata" | sed "s/$sid/\$sid/;s/$uid/\$uid/" > "$sendfile"
+		(($uid != $admin)) && sendMsg "$admin" "$(echo -e "$sender($uid):\n$context")" &
 
 		mkfifo "$fifofile"
 		(sendReply) &
