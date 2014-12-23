@@ -36,6 +36,7 @@ function login
 			data=$(getData "$url" "$cookies" "$data")
 		fi
 		if [ "$(getFieldArg "$data" card title)" == "登录成功" ]; then break; fi
+		echo "$data" > "$debugfile"
 		echo -e "\e[97m$(date '+%Y-%m-%d %H:%M:%S') \e[91mLogin failed, retry...\e[0m"
 		unset qq pwd
 		. "$conffile"
