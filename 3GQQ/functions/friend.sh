@@ -47,14 +47,17 @@ function sendToFriend
 	if [ -z "$friends" ]; then echo "Empty friend list!"; return; fi
 	dest="${1/% */}"
 	send="${1/#"$dest "/}"
+	matched=0
 	while read uid; do
 		read name
 		if [ "$uid" != "$dest" ] && [ -z "$(echo "$name" | egrep "$dest")" ]; then continue; fi
+		matched=1
 		echo -e "\e[96mMatched: $name($uid)\e[0m" >&2
 		sendMsg "$uid" "$send" && echo "Message sent to $name($uid)."
 	done <<-FRIENDS_HERE
 		$friends
 	FRIENDS_HERE
+	((!matched)) && echo "Cannot match $dest"
 }
 
 # Send to arbitrary QQ account
