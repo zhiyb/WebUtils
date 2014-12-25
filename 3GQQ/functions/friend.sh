@@ -5,26 +5,42 @@ function updateFriends
 	friends=
 	# Fetch friend list
 	url="$(getLinkAddr "$data" "好友列表")"
-	tmp="$(getData "$url" "$cookies")"
+	if [ -z "$url" ]; then
+		tmp="$data"
+	else
+		tmp="$(getData "$url" "$cookies")"
+	fi
 	url="$(getLinkAddr "$tmp" "分组" | uniq)"
-	tmp="$(getData "$url" "$cookies")"
-	tmp="$(getSection "$tmp" "anchor" "我的好友(.*")"
+	[ -z "$url" ] && echo -e "\e[91mUpdate friend list failed.\e[0m" && return 1
+	tmp=
+	while :; do
+		tmpData="$(getData "$url" "$cookies")"
+		tmp="$(echo -e "$tmp\n$(getSection "$tmpData" "anchor" "我的好友(.*")")"
+		echo "$tmpData" | fgrep -q "下页" || break;
+		url="$(getLinkAddr "$tmpData" "下页")"
+	done
+	tmp="$(echo "$tmp" | tail -n +2)"
 	cnt="$(($(echo "$tmp" | wc -l) / 9))"
 	for ((i = 1; i < cnt + 1; i++)); do
-		# Extract group information
 		group="$(echo "$tmp" | head -n $((9 * i)) | tail -n 9)"
-		url="$(getFieldArg "$group" go href)"
-		group="$(getPostData "$group")"
-		group="$(getData "$url" "$cookies" "$group" | stripWhiteSpace | tr -d '\n' | \
-			sed "s/^.*<anchor>.*\"我的好友\".*<\/anchor><br\/>\(.*\)<br\/><anchor>.*\"我的好友\".*<\/anchor>.*\$/\1/;s/<br\/>/\n/g")"
-		while read tmp; do
-			url="$(getArg "$tmp" href)"
-			uid="$(getURLArg "$url" u)"
-			name="$(echo "$tmp" | sed "s/<[^>]*>//g")"
-			friends="$(echo -e "$uid\n$name\n$friends")"
-		done <<-FRIENDS_HERE
-			$group
-		FRIENDS_HERE
+		while :; do
+			# Extract group information
+			url="$(getFieldArg "$group" go href)"
+			group="$(getPostData "$group")"
+			tmpData="$(getData "$url" "$cookies" "$group")"
+			group="$(echo "$tmpData" | stripWhiteSpace | tr -d '\n' | sed "s/^.*<anchor>.*\"我的好友\".*<\/anchor><br\/>\(.*\)<br\/><anchor>.*\"我的好友\".*<\/anchor>.*\$/\1/;s/<br\/>/\n/g")"
+			while read line; do
+				url="$(getArg "$line" href)"
+				uid="$(getURLArg "$url" u)"
+				name="$(echo "$line" | sed "s/<[^>]*>//g")"
+				echo -e "$name($uid)"
+				friends="$(echo -e "$uid\n$name\n$friends")"
+			done <<-FRIENDS_HERE
+				$group
+			FRIENDS_HERE
+			echo "$tmpData" | fgrep -q "下页" || break;
+			group="$(getSection "$tmpData" "anchor" "下页")"
+		done
 	done
 	echo -e "\e[96mFriend list updated.\e[0m"
 }
