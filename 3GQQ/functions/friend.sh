@@ -29,6 +29,12 @@ function updateFriends
 	echo -e "\e[96mFriend list updated.\e[0m"
 }
 
+# Count friends
+function countFriends
+{
+	echo "Total: $(($(echo "$friends" | wc -l) / 2)) friends."
+}
+
 # List friends
 function listFriends
 {
@@ -38,7 +44,8 @@ function listFriends
 	done <<-FRIENDS_HERE
 		$friends
 	FRIENDS_HERE
-	echo "Total: $(($(echo "$friends" | wc -l) / 2)) friends."
+	countFriends
+	#echo "Total: $(($(echo "$friends" | wc -l) / 2)) friends."
 }
 
 # Send to friend

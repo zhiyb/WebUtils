@@ -3,6 +3,7 @@ function messageLoop
 {
 	echo -e "\e[93mRefresh every $sleep seconds\e[0m"
 	echo -e "\e[92m$(date '+%Y-%m-%d %H:%M:%S') Entered message loop.\e[0m"
+	friendList=0
 	sendMsg "$admin" "AUTO initialised at $(date '+%Y-%m-%d %H:%M:%S')" &
 
 	while :; do
@@ -50,6 +51,12 @@ function messageLoop
 			echo -n "$refresh" > "$urlfile"
 			sleep "$sleep"
 			continue	# No message, return
+		fi
+
+		if ((friendList == 0)); then
+			updateFriends
+			countFriends
+			friendList=1
 		fi
 
 		msgdata=$(echo -n "$data" | sed -n "/${patternA}/,/${patternB}/{
