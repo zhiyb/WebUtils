@@ -1,0 +1,11 @@
+<anchor>
+<go href="http://q16.3g.qq.com/g/s?sid=$sid&amp;aid=sendmsg&amp;tfor=qq&amp;referer=" method="post">
+<postfield name="msg" value="$msg"/>
+<postfield name="u" value="$uid"/>
+<postfield name="saveURL" value="0"/>
+<postfield name="do" value="send"/>
+<postfield name="on" value="1"/>
+<postfield name="saveURL" value="0"/>
+</go>
+发送
+</anchor>
