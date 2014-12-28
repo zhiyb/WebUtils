@@ -31,7 +31,7 @@ function messageLoop
 			#if ((failed++ < retry)); then continue; fi
 			#exit 0
 		elif [ -z "$(echo "$data" | fgrep "$pattern")" ]; then
-			echo -e "\e[97m$(date '+%Y-%m-%d %H:%M:%S') \e[91mConnection failed, retry: $failed...\e[0m"
+			echo -e "\e[97m$(date '+%Y-%m-%d %H:%M:%S') \e[91mUnknown failure, retry: $failed...\e[0m"
 			echo -e "$lastdata\n__NEW__\n$data" > "$debugfile"
 			if ((failed++ < retry)); then relogin > /dev/null; continue; fi
 			exit 1
