@@ -42,6 +42,13 @@ function messageLoop
 			failed=0
 		fi
 
+		if ((startupUpdate)); then
+			startupUpdate=0
+			updateFriends
+			#countFriends
+			((admin)) && ((reportInit)) && sendMsg "$admin" "$(countFriends)" &
+		fi
+
 		. "$cmdfile"
 		: > "$cmdfile"
 
@@ -50,13 +57,6 @@ function messageLoop
 			echo -n "$refresh" > "$urlfile"
 			sleep "$sleep"
 			continue	# No message, return
-		fi
-
-		if ((startupUpdate)); then
-			startupUpdate=0
-			updateFriends
-			#countFriends
-			((admin)) && ((reportInit)) && sendMsg "$admin" "$(countFriends)" &
 		fi
 
 		msgdata=$(echo -n "$data" | sed -n "/${patternA}/,/${patternB}/{
