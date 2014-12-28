@@ -79,7 +79,7 @@ function sendReply
 	pid="$(<"$fifofile")"
 	touch "$piddir"/$pid
 	reply="$($op)"
-	sendMsg "$uid" "$startnote$reply$finishnote"
+	sendMsg "$uid" "$startNote$reply$finishNote"
 	rm "$piddir"/$pid
 }
 
@@ -116,7 +116,7 @@ function msgHandle
 		fi
 		uid="$(getArg "$(echo "$replydata" | fgrep "name=\"u\"")" value)"
 		echo -e "$replydata" | sed "s/$sid/\$sid/;s/$uid/\$uid/" > "$sendfile"
-		(($uid != $admin)) && sendMsg "$admin" "$(echo -e "$sender($uid):\n$context")" &
+		((admin)) && ((reportMessage)) && (($uid != $admin)) && sendMsg "$admin" "$(echo -e "$sender($uid):\n$context")" &
 
 		mkfifo "$fifofile"
 		(sendReply) &
@@ -124,5 +124,5 @@ function msgHandle
 		echo "$!" > "$fifofile"
 		rm "$fifofile"
 	done
-	((msgcount >= 3)) && sendMsg "$uid" "You send messages too fast! Please be slower, otherwise messages may become disordered."
+	((tooFast)) && ((msgcount >= 3)) && sendMsg "$uid" "You send messages too fast! Please be slower, otherwise messages may become disordered."
 }

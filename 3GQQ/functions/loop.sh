@@ -3,8 +3,7 @@ function messageLoop
 {
 	echo -e "\e[93mRefresh every $sleep seconds\e[0m"
 	echo -e "\e[92m$(date '+%Y-%m-%d %H:%M:%S') Entered message loop.\e[0m"
-	friendList=0
-	sendMsg "$admin" "AUTO initialised at $(date '+%Y-%m-%d %H:%M:%S')" &
+	((admin)) && ((reportInit)) && sendMsg "$admin" "AUTO initialised at $(date '+%Y-%m-%d %H:%M:%S')" &
 
 	while :; do
 		lastdata="$data"
@@ -39,7 +38,7 @@ function messageLoop
 		fi
 		if ((failed)); then
 			echo -e "\e[92m$(date '+%Y-%m-%d %H:%M:%S') Back to message loop.\e[0m"
-			sendMsg "$admin" "AUTO recovered at $(date '+%Y-%m-%d %H:%M:%S')" &
+			((admin)) && ((reportRecovery)) && sendMsg "$admin" "AUTO recovered at $(date '+%Y-%m-%d %H:%M:%S')" &
 			failed=0
 		fi
 
@@ -53,10 +52,11 @@ function messageLoop
 			continue	# No message, return
 		fi
 
-		if ((friendList == 0)); then
+		if ((startupUpdate)); then
+			startupUpdate=0
 			updateFriends
-			countFriends
-			friendList=1
+			#countFriends
+			((admin)) && ((reportInit)) && sendMsg "$admin" "$(countFriends)" &
 		fi
 
 		msgdata=$(echo -n "$data" | sed -n "/${patternA}/,/${patternB}/{

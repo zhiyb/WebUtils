@@ -56,12 +56,18 @@ export sleep=3
 export encoding="UTF-8"
 export welcomemsg=1
 export addfriend=0
-export startnote=
-export finishnote=
+export startNote=
+export finishNote=
 export friendverify="Verify message not defined."
 export loginType=1
 export imgType=png
 export retry=10
+export admin=
+export reportInit=1
+export reportRecovery=0
+export reportMessage=1
+export startupUpdate=1
+export tooFast=1
 
 # Program variables
 export pattern="聊天"
