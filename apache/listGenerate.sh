@@ -1,6 +1,8 @@
 #! /bin/bash
 
-[ "$#" != 1 ] && echo "Args: URL" && exit 1
+name=1
+[ "$1" == n ] && name=0 && shift
+[ "$#" != 1 ] && echo "Args: [n] URL" && exit 1
 
 # Load functions
 . ./functions/wget.sh
@@ -19,7 +21,11 @@ function getLists
 function output
 {
 	for ((i = 0; i < ${#namelist[@]}; i++)); do
-		echo "\"${urllist[i]}\" \"${namelist[i]}\""
+		if (($name)); then
+			echo "\"${urllist[i]}\" \"${namelist[i]}\""
+		else
+			echo "${urllist[i]}"
+		fi
 	done
 }
 
