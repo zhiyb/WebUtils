@@ -1,0 +1,7 @@
+# TingChina
+
+# 大话刘罗锅_郭德纲
+url=http://www.tingchina.com/xiangsheng/disp_10370.htm
+#from=4
+
+network="电信"
