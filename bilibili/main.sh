@@ -36,6 +36,7 @@ function downloadThread
 		#[ -e "$file" ] && echo -e "\e[93mSkip \e[37m$1\e[0m" && continue
 		echo -e "\e[93mDownloading \e[37m$1\e[0m"
 		wget --progress=bar:force -c -O "$file" "$url" 2>&1 | progressFilter && return
+#		wget --progress=bar:force --user-agent="$agent" -c -O "$file" "$url" 2>&1 && return
 	done
 }
 
@@ -44,6 +45,8 @@ export conffile="conf.txt"
 
 # Configuration variables
 encoding="UTF-8"
+#agent="Mozilla/5.0 (compatible, MSIE 11, Windows NT 6.3; Trident/7.0;  rv:11.0) like Gecko"
+#agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10.8; rv:21.0) Gecko/20100101 Firefox/21.0"
 
 [ ! -e "$conffile" ] && echo "Error: no $conffile" && exit 1
 . $conffile

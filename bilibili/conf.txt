@@ -5,4 +5,7 @@ dir=/mnt/usr
 # Vocaloid传说级名曲补完计划
 av=av188136
 
+# 【收藏级画质】【1080P】幻想嘉年华 【1-12 SP+EX+Vol】
+av=av1929720
+
 network="电信"
