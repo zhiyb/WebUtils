@@ -1,0 +1,43 @@
+# Basic settings
+# (string)	QQ account, leave blank for interactive input
+qq=544080857
+# (string)	Password, leave blank for interactive input
+pwd=
+
+# Admin behaviour
+# (string)	QQ account, admin account
+admin=544080857
+# (bool)	Report initialisation
+reportInit=1
+# (bool)	Report recovery
+reportRecovery=0
+# (bool)	Report messages
+reportMessage=1
+
+# Behaviour
+# (bool)	Update friend list at startup
+startupUpdate=1
+# (integer)	Refresh time (seconds), default 3
+sleep=1
+# (integer)	Retry times, default 10
+retry=10
+# (bool)	Send too fast notification
+tooFast=1
+# (bool)	Display welcome message after receive
+welcomemsg=0
+# (bool)	Accept friend request
+addfriend=1
+# (string)	Console message output encoding
+encoding=UTF-8
+
+# (string)	Prepend to reply
+startNote=
+# (string)	Append to reply
+finishNote=
+# (string)	Friend request verify string
+friendverify=zhiyb-AUTO
+
+# (string)	Program to display image
+#img=./bin/ImageViewer
+# (gif/png/jpg)	Image verify, image type
+imgType=png
